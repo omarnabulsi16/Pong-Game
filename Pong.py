@@ -44,14 +44,14 @@ def run_game():
         if score1.points == 3:
             winner.prep_msg("You won")
             winner.draw()
-            sound = pygame.mixer.Sound(r"C:\Users\omarn\Desktop\Victory.wav")
-            pygame.mixer.music.load(r'C:\Users\omarn\Desktop\Victory.wav')
+            sound = pygame.mixer.Sound('Victory.wav')
+            pygame.mixer.music.load('Victory.wav')
             pygame.mixer.music.play(1, 0.0)
         else:
             winner.prep_msg("You lost")
             winner.draw()
-            sound = pygame.mixer.Sound(r"C:\Users\omarn\Desktop\lost.wav")
-            pygame.mixer.music.load(r'C:\Users\omarn\Desktop\lost.wav')
+            sound = pygame.mixer.Sound('lost.wav')
+            pygame.mixer.music.load('lost.wav')
             pygame.mixer.music.play(1, 0.0)
         pygame.display.flip()
         sleep(3)
