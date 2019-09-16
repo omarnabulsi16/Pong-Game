@@ -7,13 +7,16 @@ from Score import *
 import GameFunctions as gameFunc
 
 
+# function to start the game
 def run_game():
+    # screen initializations and menu screen
     pygame.init()
     settings = Settings()
     screen = pygame.display.set_mode((settings.screen_width, settings.screen_height))
     play_button = Button(screen, "Play")
     title = Title(screen, "Pong", 0)
 
+    # game screen display settings
     while True:
         screen.fill(settings.bg_color)
         title.draw()
@@ -41,22 +44,26 @@ def run_game():
             gameFunc.update_game(settings, ball, midpaddle1, toppaddle1, bottompaddle1, midpaddle2, toppaddle2, bottompaddle2)
             gameFunc.update_screen(screen, settings, ball, midpaddle1, toppaddle1, bottompaddle1, midpaddle2, toppaddle2,
                              bottompaddle2, score1, score2)
+        # show win screen after player scores 3 points and play win audio
         if score1.points == 3:
             winner.prep_msg("You won")
             winner.draw()
             sound = pygame.mixer.Sound('Victory.wav')
             pygame.mixer.music.load('Victory.wav')
             pygame.mixer.music.play(1, 0.0)
+        # show lose screen when player loses and play lose audio
         else:
             winner.prep_msg("You lost")
             winner.draw()
             sound = pygame.mixer.Sound('lost.wav')
             pygame.mixer.music.load('lost.wav')
             pygame.mixer.music.play(1, 0.0)
+        # 3 second delay before game start after clicking play from menu screen
         pygame.display.flip()
         sleep(3)
         settings.game_start = False
         pygame.mouse.set_visible(True)
 
 
+# start game        
 run_game()
