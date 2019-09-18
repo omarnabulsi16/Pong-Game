@@ -1,7 +1,7 @@
 import random
 
 class Settings:
-    # paddle and appearance settings
+    # paddle and appearance settings constructor
     def __init__(self):
         self.screen_width = 1000
         self.screen_height = 600
