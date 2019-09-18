@@ -7,7 +7,7 @@ from Score import *
 import GameFunctions as gameFunc
 
 
-# function to start the game
+# start the game
 def run_game():
     # screen initializations and menu screen
     pygame.init()
