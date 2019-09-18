@@ -3,6 +3,7 @@ from pygame.sprite import Sprite
 
 
 class MidPaddle1(Sprite):
+    # constructor
     def __init__(self, settings, screen):
         super(MidPaddle1, self).__init__()
         self.screen = screen
