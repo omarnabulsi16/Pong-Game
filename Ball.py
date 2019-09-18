@@ -2,7 +2,7 @@ import pygame
 from pygame.sprite import Sprite
 
 class Ball(Sprite):
-    # function to initialize ball location and ball settings on screen
+    # initialize ball location and ball settings on screen
     def __init__(self, settings, screen):
         super(Ball, self).__init__()
         self.screen = screen
@@ -18,18 +18,18 @@ class Ball(Sprite):
         self.run = settings.ball_run
         self.speed = settings.ball_speed
         
-    # function to update ball location as it moves on the screen
+    # update ball location as it moves on the screen
     def update(self):
         self.centery += self.rise * self.speed
         self.centerx += self.run * self.speed
         self.rect.centerx = self.centerx
         self.rect.centery = self.centery
         
-    # function to draw the ball into the game
+    # draw the ball into the game
     def draw(self):
         pygame.draw.rect(self.screen, self.color, self.rect)
         
-    # function to reset the ball and be served at different sides and angles
+    # reset the ball and be served at different sides and angles
     def reset_ball(self, settings):
         self.rise = settings.ball_rise
         self.run = settings.ball_run
