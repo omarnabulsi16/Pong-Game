@@ -121,7 +121,7 @@ def check_score(settings, screen, ball, midpaddle1, toppaddle1, bottompaddle1, m
         update_screen(screen, settings, ball, midpaddle1, toppaddle1, bottompaddle1, midpaddle2, toppaddle2,
                       bottompaddle2, score1, score2)
 
-        #delays ball entering screen after someone scores
+        # delays ball entering screen after someone scores
         sleep(3)
 
 # function to make the computer move paddles by tracking the ball
