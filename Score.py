@@ -2,6 +2,7 @@ import pygame.font
 
 # class to calculate player score
 class Score1:
+    # constructor
     def __init__(self, screen):
         super(Score1, self).__init__()
         self.screen = screen
