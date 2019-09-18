@@ -1,7 +1,7 @@
 import sys, pygame
 from time import sleep
 
-# function to move paddles down when down arrow key is clicked
+# move paddles down when down arrow key is clicked
 def check_keydown_events(event, midpaddle1, toppaddle1, bottompaddle1):
     if event.key == pygame.K_LEFT:
         toppaddle1.moving_left = True
@@ -14,7 +14,7 @@ def check_keydown_events(event, midpaddle1, toppaddle1, bottompaddle1):
     elif event.key == pygame.K_DOWN:
         midpaddle1.moving_down = True
 
-# function to move paddles up when up arrow key is clicked
+# move paddles up when up arrow key is clicked
 def check_keyup_events(event, midpaddle1, toppaddle1, bottompaddle1):
     if event.key == pygame.K_LEFT:
         toppaddle1.moving_left = False
@@ -27,7 +27,7 @@ def check_keyup_events(event, midpaddle1, toppaddle1, bottompaddle1):
     elif event.key == pygame.K_DOWN:
         midpaddle1.moving_down = False
 
-# function to check if user has clicked the x button to quit the game and check mouse clicks
+# check if user has clicked the x button to quit the game and check mouse clicks
 def check_events(settings, play_button, midpaddle1, toppaddle1, bottompaddle1):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -40,12 +40,12 @@ def check_events(settings, play_button, midpaddle1, toppaddle1, bottompaddle1):
             mouse_x, mouse_y = pygame.mouse.get_pos()
             check_play_button(settings, play_button, mouse_x, mouse_y)
 
-# function to see if the play button was clicked
+# check if the play button was clicked
 def check_play_button(settings, play_button, mouse_x, mouse_y):
     if play_button.rect.collidepoint(mouse_x, mouse_y):
         settings.game_start = True
 
-# function to update location of paddles and ball accordingly
+# update location of paddles and ball accordingly
 def update_game(settings, ball, midpaddle1, toppaddle1, bottompaddle1, midpaddle2, toppaddle2, bottompaddle2):
     check_vertical_paddle_collision(settings, ball, midpaddle1, midpaddle2)
     check_horizontal_paddle_collision(settings, ball, toppaddle1, bottompaddle1, toppaddle2, bottompaddle2)
@@ -57,7 +57,7 @@ def update_game(settings, ball, midpaddle1, toppaddle1, bottompaddle1, midpaddle
     toppaddle2.update()
     bottompaddle2.update()
 
-# function to update scores on screen once the player or computer scores
+# update scores on screen once the player or computer scores
 def update_screen(screen, settings, ball, midpaddle1, toppaddle1, bottompaddle1, midpaddle2, toppaddle2, bottompaddle2,
                   score1, score2):
     screen.fill(settings.bg_color)
@@ -73,19 +73,19 @@ def update_screen(screen, settings, ball, midpaddle1, toppaddle1, bottompaddle1,
     ball.draw()
     pygame.display.flip()
 
-# function to check if the ball has collided with any vertical paddles
+# check if the ball has collided with any vertical paddles
 def check_vertical_paddle_collision(settings, ball, midpaddle1, midpaddle2):
     a = pygame.sprite.collide_rect(ball, midpaddle1)
     b = pygame.sprite.collide_rect(ball, midpaddle2)
     if a or b:
         ball.speed *= settings.ball_speedup
         ball.run *= -1
-        sound = pygame.mixer.Sound(r"C:\Users\omarn\Desktop\pickup.wav")
-        pygame.mixer.music.load(r'C:\Users\omarn\Desktop\pickup.wav')
+        sound = pygame.mixer.Sound("sounds/pickup.wav")
+        pygame.mixer.music.load('sounds/pickup.wav')
         pygame.mixer.music.play(1, 0.0)
         musicPlaying = True;
 
-# function to check if the ball has collided with any horizontal paddles
+# check if the ball has collided with any horizontal paddles
 def check_horizontal_paddle_collision(settings, ball, toppaddle1, bottompaddle1, toppaddle2, bottompaddle2):
     a = pygame.sprite.collide_rect(ball, toppaddle1)
     b = pygame.sprite.collide_rect(ball, bottompaddle1)
@@ -94,12 +94,12 @@ def check_horizontal_paddle_collision(settings, ball, toppaddle1, bottompaddle1,
     if a or b or c or d:
         ball.speed *= settings.ball_speedup
         ball.rise *= -1
-        sound = pygame.mixer.Sound(r'C:\Users\omarn\Desktop\pickup.wav')
-        pygame.mixer.music.load(r'C:\Users\omarn\Desktop\pickup.wav')
+        sound = pygame.mixer.Sound('sounds/pickup.wav')
+        pygame.mixer.music.load('sounds/pickup.wav')
         pygame.mixer.music.play(1, 0.0)
         musicPlaying=True;
 
-# function to increment scores to the side of player that scores on opponent
+# increment scores to the side of player that scores on opponent
 def check_score(settings, screen, ball, midpaddle1, toppaddle1, bottompaddle1, midpaddle2, toppaddle2, bottompaddle2,
                 score1, score2):
     if (ball.rect.right >= ball.screen_rect.right or ball.rect.left <= ball.screen_rect.left
@@ -124,7 +124,7 @@ def check_score(settings, screen, ball, midpaddle1, toppaddle1, bottompaddle1, m
         # delays ball entering screen after someone scores
         sleep(3)
 
-# function to make the computer move paddles by tracking the ball
+# make the computer move paddles by tracking the ball
 def ai_directives(ball, midpaddle2, toppaddle2, bottompaddle2):
     if ball.rect.center < ball.screen_rect.center:
         if midpaddle2.rect.centery > midpaddle2.screen_rect.centery:
