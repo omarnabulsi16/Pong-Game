@@ -1,6 +1,6 @@
 import pygame.font
 
-# class to calculate player score
+# calculate player score
 class Score1:
     # constructor
     def __init__(self, screen):
@@ -25,7 +25,7 @@ class Score1:
     def draw(self):
         self.screen.blit(self.msg_image, self.msg_image_rect)
 
-# class to calculate computer score
+# calculate computer score
 class Score2:
     def __init__(self, screen):
         self.screen = screen
@@ -47,7 +47,7 @@ class Score2:
     def draw(self):
         self.screen.blit(self.msg_image, self.msg_image_rect)
 
-# class to display winner
+# display winner
 class Winner:
     def __init__(self, screen):
         self.screen = screen
